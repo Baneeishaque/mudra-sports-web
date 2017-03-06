@@ -23,8 +23,8 @@ $email_body = "You have received a new message from your website's Quick Contact
 $headers = "From: quick-contact@mudrasports.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
 $headers .= "Reply-To: $email_address";
 
-$to2 = 'baneeishaque@gmail.com';
-$to = 'conutindia@gmail.com';
+//$to2 = 'baneeishaque@gmail.com';
+//$to = 'conutindia@gmail.com';
 
 mail($to, $email_subject, $email_body, $headers);
 mail($to2, $email_subject, $email_body, $headers);

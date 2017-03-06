@@ -1,6 +1,6 @@
 <?php
 
-function paginate_init() {
+function paginate_init($key) {
     //Pagination
     $starting_index = 0;
     $capacity = 16;
@@ -10,7 +10,7 @@ function paginate_init() {
     $con = mysqli_connect($host, $username, $password, $dbname);
 
     //Pagination
-    $sql = "SELECT COUNT(name) AS coun FROM product";
+    $sql = "SELECT COUNT(name) AS coun FROM product where name like '$key%' or modal like '$key%' ";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     $count = $row['coun'];
@@ -18,18 +18,18 @@ function paginate_init() {
     common_display();
 
     if ($count < $capacity) {
-        display_all($starting_index, $count);
+        display_all($starting_index, $count,$key);
     } else {
 
-        display_pagination($starting_index, $capacity, $count, 1);
+        display_pagination($starting_index, $capacity, $count, 1,$key);
     }
 }
 
-function paginate($starting_index, $count, $current_page) {
+function paginate($starting_index, $count, $current_page,$key) {
     //Pagination
     $capacity = 16;
     common_display();
-    display_pagination($starting_index, $capacity, $count, $current_page);
+    display_pagination($starting_index, $capacity, $count, $current_page,$key);
 }
 
 function common_display() {
@@ -66,7 +66,7 @@ function common_display() {
                                     </div>';
 }
 
-function display_all($starting_index, $count) {
+function display_all($starting_index, $count,$key) {
 
     echo '<div class="panel-body">
                                         <div class="form-group float-left"> Showing ' . ($starting_index + 1) . ' - ' . $count . ' of ' . $count . ' items </div>
@@ -78,7 +78,7 @@ function display_all($starting_index, $count) {
     $con = mysqli_connect($host, $username, $password, $dbname);
     echo '<div class="catalog-grid">
                                 <ul class=" product-grid">';
-    $sql = "SELECT id,name,modal,description,status FROM product";
+    $sql = "SELECT id,name,modal,description,status FROM product where name like '$key%' or modal like '$key%' ";
     $result = mysqli_query($con, $sql);
 
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -122,7 +122,7 @@ function display_all($starting_index, $count) {
                             </div>';
 }
 
-function display_pagination($starting_index, $capacity, $count, $current_page) {
+function display_pagination($starting_index, $capacity, $count, $current_page,$key) {
     $ending_index = $starting_index + $capacity;
     $no_of_pages = $count / $capacity;
     echo '<div class="panel-body">
@@ -136,7 +136,7 @@ function display_pagination($starting_index, $capacity, $count, $current_page) {
 
     echo '<div class="catalog-grid">
                                 <ul class=" product-grid">';
-    $sql = "SELECT id,name,modal,description,status FROM product LIMIT $starting_index,$capacity";
+    $sql = "SELECT id,name,modal,description,status FROM product where name like '$key%' or modal like '$key%' LIMIT $starting_index,$capacity";
     //echo $sql;
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -198,17 +198,17 @@ function display_pagination($starting_index, $capacity, $count, $current_page) {
             //echo '<script>alert("' . $current_page . '");</script>';
             echo '<li class="active">';
             if ($index == 0) {
-                echo '<a href="products.php" class="btn btn-primary"><span>1</span></a></li>';
+                echo '<a href="product_search.php?key=' . $key . '" class="btn btn-primary"><span>1</span></a></li>';
             } else {
-                echo '<a href="products.php?starting_index=' . $ending_index . '&count=' . $count . '&current_page=' . ($index + 1) . '" class="btn btn-primary"><span>' . ($index + 1) . '</span></a></li>';
+                echo '<a href="product_search.php?starting_index=' . $ending_index . '&count=' . $count . '&current_page=' . ($index + 1) . '&key=' . $key . '" class="btn btn-primary"><span>' . ($index + 1) . '</span></a></li>';
                 $ending_index = $ending_index + $capacity;
             }
         } else {
             echo '<li>';
             if ($index == 0) {
-                echo '<a href="products.php" class="btn btn-default"><span>1</span></a></li>';
+                echo '<a href="products.php?key=' . $key . '" class="btn btn-default"><span>1</span></a></li>';
             } else {
-                echo '<a href="products.php?starting_index=' . $ending_index . '&count=' . $count . '&current_page=' . ($index + 1) . '" class="btn btn-default"><span>' . ($index + 1) . '</span></a></li>';
+                echo '<a href="products.php?starting_index=' . $ending_index . '&count=' . $count . '&current_page=' . ($index + 1) . '&key='.$key.'" class="btn btn-default"><span>' . ($index + 1) . '</span></a></li>';
                 $ending_index = $ending_index + $capacity;
             }
         }

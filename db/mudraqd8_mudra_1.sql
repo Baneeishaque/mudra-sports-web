@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Mar 01, 2017 at 01:48 PM
+-- Generation Time: Mar 06, 2017 at 12:48 PM
 -- Server version: 5.5.39-36.0-log
 -- PHP Version: 5.4.31
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mudraqd8_mudra`
 --
-CREATE DATABASE IF NOT EXISTS `mudraqd8_mudra` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `mudraqd8_mudra`;
 
 -- --------------------------------------------------------
 
@@ -28,8 +26,7 @@ USE `mudraqd8_mudra`;
 -- Table structure for table `brand`
 --
 
-DROP TABLE IF EXISTS `brand`;
-CREATE TABLE `brand` (
+CREATE TABLE IF NOT EXISTS `brand` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
@@ -63,8 +60,7 @@ INSERT INTO `brand` (`id`, `name`) VALUES
 -- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category` (
+CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
@@ -90,8 +86,7 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product` (
+CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `modal` varchar(50) NOT NULL,
@@ -103,7 +98,7 @@ CREATE TABLE `product` (
   `category_id` int(11) DEFAULT NULL,
   `part_number` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=126 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=145 ;
 
 --
 -- Dumping data for table `product`
@@ -211,15 +206,28 @@ INSERT INTO `product` (`id`, `name`, `modal`, `description`, `brand_id`, `rating
 (112, 'SEATED ROW MACHINE', 'SRM-1700G-2', '            ', 7, NULL, '', NULL, 6, NULL),
 (113, 'COUNTER BALANCED SMITH MACHINE ', 'SSM-350G', '            ', 7, NULL, '', NULL, 6, NULL),
 (114, 'SHOULDER PRESS MACHINE', 'SSP 800G-2', '            ', 7, NULL, '', NULL, 6, NULL),
-(117, 'BILLIARDS & SNOOKERS', 'KENT-3700', '            ', 17, NULL, '', NULL, 10, NULL),
-(118, 'BILLIARDS & SNOOKERS', 'KENT-3600', '            ', 17, NULL, '', NULL, 10, NULL),
-(119, 'BILLIARDS & SNOOKERS', 'KENT-3400', '            ', 17, NULL, '', NULL, 10, NULL),
-(120, 'BILLIARDS & SNOOKERS', 'KENT-2900', '            ', 17, NULL, '', NULL, 10, NULL),
-(121, 'BILLIARDS & SNOOKERS', 'KENT-1600', '            ', 17, NULL, '', NULL, 10, NULL),
-(122, 'BILLIARDS & SNOOKERS', 'KENT-1500', '            ', 17, NULL, '', NULL, 10, NULL),
 (123, 'Dual Cable Column And Chin Up / Dip Machine', ' MDC2000', '	Built to deliver strength-and deliver it does. Structurally and biomechanically designed for intensive club use, the Dual Cable Column and Chin Up/Dip rigid body structure plays a critical role in the machineâ€™s superb handling. Its large base frame aids stability and comfort, and yields a neutral weight distribution. Substantial rear and side sub frames help eliminate lateral torsion and vibration.            ', 8, NULL, '', NULL, 6, NULL),
 (124, 'Smith Machine', 'MSM', 'The Smith Machine is the product of advanced biomechanical design, superior structural engineering and meticulous quality standards. It is a collection of the best benefits the Smith Machine, Half-Cage and Multi-station Gyms have to offer and its backed by the best warranty in the industry.\r\nï¼Ž	Oval 11-gauge steel gives the MSM a modern look and fantastic stability. Case hardened rods and club-quality bearings ensure smooth performance at any weight. Add it all up and you have got the perfect smith machine for any facility.', 8, NULL, '', NULL, 6, NULL),
-(125, 'Chin/Dip Machine', 'MCD2100', '\r\nï¼Ž	Built to deliver strengthâ€”and deliver it does. Structurally and biomechanically designed for intensive club use, the Chin/Dipâ€™ rigid body structure plays a critical role in the machineâ€™s superb handling. Its large base frame aids stability and comfort, and yields a neutral weight distribution. Substantial rear and side subframes help eliminate lateral torsion and vibration.', 8, NULL, '', NULL, 6, NULL);
+(125, 'Chin/Dip Machine', 'MCD2100', '\r\nï¼Ž	Built to deliver strengthâ€”and deliver it does. Structurally and biomechanically designed for intensive club use, the Chin/Dipâ€™ rigid body structure plays a critical role in the machineâ€™s superb handling. Its large base frame aids stability and comfort, and yields a neutral weight distribution. Substantial rear and side subframes help eliminate lateral torsion and vibration.', 8, NULL, '', NULL, 6, NULL),
+(126, 'GAIT TRAINER TREADMILL', 'MT200', 'The MT200 features one speed control motor, an incline motor, and a decline motor. Three motors together help users to achieve bi-directional training in combination with uphill or downhill protocols. Adding more versatility to exercise and therapy options, the parallel bars, deck height, and belt speed acceleration are adjustable in small and precise increments. \r\n Biofeedback is offered for clinicians to accurately assess user gait performance. Feedback includes the symmetry index, which is particularly outstanding for clinicians to condition usersâ€™ step and cadence. As a result, this treadmill is ideal for pediatric exercises, neurologically impaired patients, and other populations.\r\n', 6, NULL, 'recommended', NULL, 13, NULL),
+(127, 'RECUMBENT TOTAL BODY STEPPER', 'MS300', 'The MS300 facilitates full body exercise in coordinated, linear, natural 1:1 leg and arm motion. Self-adjustable stroke length accommodates patientsâ€™ specific range of motion capabilities, providing low impact movement for knees, ankles, and hips in a safe semi-recumbent position.  \r\n \r\nVersatile for different training emphasis, MS300â€™s unique quadrilateral exercise pattern allows users to selectively distribute different extent of exercise efforts across their four limbs. Limbs that input more force can efficiently lead less involved limbs to functional  movements and maintain elevated heart rate. A low inertia starting at 5 watts translates to smoothness; the work rate can increase up to 750 watts, accompanied by different step speeds of the userâ€™s choice.\r\n', 6, NULL, 'featured', NULL, 13, NULL),
+(128, 'RECUMBENT TOTAL BODY STEPPER', 'MS350', 'The MS350 Medical Recumbent Stepper by Spirit Fitness is a semi-recumbent step machine with a removable seat allowing use by wheelchair patients in medical and specialized care applications for muscular and cardiopulmonary rehabilitation and physical therapy. Patients can experience full body exercise through coordinated, linear, and natural 1:1 leg and arm motion. Self-adjustable stroke length accommodates patientsâ€™ specific range of motion capabilities, providing low impact movement for knees, ankles, and hips in a safe semi-recumbent position. Versatile for different training emphasis, the MS350â€™s unique quadrilateral exercise pattern allows users to selectively distribute different extent of exercise efforts across their four limbs. Limbs that input more force can efficiently lead less involved limbs to functional movements and maintain elevated heart rate. A low inertia starting at 5 watts translates to smoothness; the work rate can increase up to 750 watts, accompanied by dif', 6, NULL, 'featured', NULL, 13, NULL),
+(129, 'RECUMBENT LOWER BODY ERGOMETER', 'MR100', 'The MR100â€™s recumbent design pays particular attention to hip and lowerbody joint mobility, allowing optimal rehabilitation at a relatively relaxed posture. Users may input desired knee flexion angles and the software will suggest the pedal and the seatâ€™s fore/aft position. Variables such as body symmetry and limb length can be taken into account for clinicians to finely tailor to every patientâ€™s needs. \r\n The MR100 is equipped with the standard MA900 Rehabilitation Adjustable Crank, which operates in a closed-kinetic chain environment. It is safe, impact free, and pain free within the patientâ€™s ROM.\r\n', 6, NULL, 'featured', NULL, 13, NULL),
+(130, 'UPRIGHT LOWER BODY ERGOMETER', 'MU100', 'The MU100 addresses lower-body conditioning with advanced options for optimal knee positioning. Clinicians may input desired knee flexion angles and the software will suggest the pedal and the seatâ€™s fore/aft position. Variables such as body symmetry and limb length can be taken into account for clinicians to finely tailor to every patientâ€™s needs. The MU100 is equipped with the standard MA900 Rehabilitation Adjustable Crank, allowing clinicians to address lower extremity range of motion differences by individual positioning of the pedals.', 6, NULL, 'featured', NULL, 13, NULL),
+(131, 'FREE WEIGHT', 'GAB100', '', 7, NULL, '', NULL, 6, NULL),
+(132, 'CAM SERIES AB AND BACK MACHINE', 'GCAB360', '', 7, NULL, '', NULL, 6, NULL),
+(133, 'SOLID WOOD 9 FEET BILLIARD', 'KENT-1400', '', 17, NULL, '', NULL, 10, NULL),
+(134, '8 FEET BILLIARD SUPER SERIES', 'KENT-1300', '', 17, NULL, '', NULL, 10, NULL),
+(135, 'SOLID WOOD 8 FEET BILLIARD', 'KENT-1500', '', 17, NULL, '', NULL, 10, NULL),
+(136, 'CLASSIC SOLID WOOD 9 FEET BILLIARD', 'KENT-2800', '', 17, NULL, '', NULL, 10, NULL),
+(137, 'CLASSIC SOLID WOOD 8 FEET BILLIARD', 'KENT-2900', '', 17, NULL, '', NULL, 10, NULL),
+(138, 'CLASSIC SOLID WOOD 9 FEET BILLIARD', 'KENT-3300', '', 17, NULL, '', NULL, 10, NULL),
+(139, 'SNOOKER 12 FEET SOLID WOOD ', 'KENT-1700', '', 17, NULL, '', NULL, 10, NULL),
+(140, 'SNOOKER 12 FEET ', 'KENT-3800', '', 17, NULL, '', NULL, 10, NULL),
+(141, 'SNOOKER TOURNAMENT 12 BRITISH', 'KENT-4800', '', 17, NULL, '', NULL, 10, NULL),
+(142, 'HIGH SPEC FOLDING TABLE TENNIS  TABLE', 'KENT TT', '', 17, NULL, '', NULL, 10, NULL),
+(143, 'STIGA PRIVAT ROLLER CSSI', 'M7180', '', 17, NULL, '', NULL, 10, NULL),
+(144, 'STIGA BASIC ROLLER', 'STIGA ', '', 17, NULL, '', NULL, 10, NULL);
 
 -- --------------------------------------------------------
 
@@ -227,8 +235,7 @@ INSERT INTO `product` (`id`, `name`, `modal`, `description`, `brand_id`, `rating
 -- Table structure for table `review`
 --
 
-DROP TABLE IF EXISTS `review`;
-CREATE TABLE `review` (
+CREATE TABLE IF NOT EXISTS `review` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(250) NOT NULL,
   `datetime` datetime NOT NULL,

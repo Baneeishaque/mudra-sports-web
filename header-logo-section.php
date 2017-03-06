@@ -5,16 +5,19 @@
                 <div class="blog-logo text-left"><a href="index.php"> <img src="img/shop-logo.png" alt="logo"/></a>
                 </div>
             </div>
-            <div class="col-md-6  col-xs-12 mobile-center">
+            <div class="col-md-6  col-xs-6 mobile-center">
                 <div class="input-group top-search">
 
                     <!--<input type="hidden" name="search_param" value="all" id="search_param">-->
-                    <input type="text" id="search-box" class="form-control" name="x" placeholder="Search term...">
-                    <div id="suggesstion-box"></div>
+                    <input type="text" id="search-box" class="form-control" name="key" placeholder="Search term...">
+                    <!--<div id="suggesstion-box"></div>-->
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span>
+                        <button class="btn btn-default" type="button" id="search-button"><span class="glyphicon glyphicon-search"></span>
                         </button>
-                    </span></div>
+                    </span>
+
+                </div>
+
             </div>
             <div class="col-md-3 col-xs-12 text-right mobile-center">
                 <div class="popover-shorty">
@@ -121,25 +124,32 @@
 <script>
 // AJAX call for autocomplete 
     $(document).ready(function () {
-        $("#search-box").keyup(function () {
-            $.ajax({
-                type: "POST",
-                url: "readCountry.php",
-                data: 'keyword=' + $(this).val(),
-                beforeSend: function () {
-                    $("#search-box").css("background", "#FFF url(LoaderIcon.gif) no-repeat 165px");
-                },
-                success: function (data) {
-                    $("#suggesstion-box").show();
-                    $("#suggesstion-box").html(data);
-                    $("#search-box").css("background", "#FFF");
-                }
-            });
+//        $("#search-box").keyup(function () {
+//            $.ajax({
+//                type: "POST",
+//                url: "readCountry.php",
+//                data: 'keyword=' + $(this).val(),
+//                beforeSend: function () {
+//                    $("#search-box").css("background", "#FFF url(LoaderIcon.gif) no-repeat 165px");
+//                },
+//                success: function (data) {
+//                    $("#suggesstion-box").show();
+//                    $("#suggesstion-box").html(data);
+//                    $("#search-box").css("background", "#FFF");
+//                }
+//            });
+//        });
+        $("#search-button").click(function () {
+//            alert($("#search-box").val());
+            if ($("#search-box").val().length !== 0)
+            {
+                window.window.location = "product_search.php?key=" + $("#search-box").val();
+            }
         });
     });
 //To select country name
-    function selectCountry(val) {
-        $("#search-box").val(val);
-        $("#suggesstion-box").hide();
-    }
+//    function selectCountry(val) {
+//        $("#search-box").val(val);
+//        $("#suggesstion-box").hide();
+//    }
 </script>

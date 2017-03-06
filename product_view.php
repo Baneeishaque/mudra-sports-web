@@ -298,30 +298,7 @@
 
                                             <p>&nbsp;</p>
 
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <h4><i class="fa fa-flag"></i> One Font, 479 Icons</h4>
-                                                    In a single collection, Font Awesome is a pictographic language of web-related actions.
-                                                    <hr>
-                                                </div>
-
-                                                <div class="col-md-6 col-sm-6">
-                                                    <h4><i class="fa fa-pencil"></i> CSS Control</h4>
-                                                    Easily style icon color, size, shadow, and anything that's possible with CSS.
-                                                    <hr>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <h4><i class="fa fa-eye"></i> Perfect on Retina Displays</h4>
-                                                    Font Awesome icons are vectors, which mean they're gorgeous on high-resolution displays.
-
-                                                </div>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <h4><i class="fa fa-desktop"></i> Desktop Friendly</h4>
-                                                    To use on the desktop or for a complete set of vectors,
-                                                    check out the <a href="./cheatsheet/">cheatsheet</a>.
-                                                </div>
-
-                                            </div>
+                                            
                                         </div>
                                         <div role="tabpanel" class="tab-pane" id="tab2">
                                             <?php echo $row['description'] ?>

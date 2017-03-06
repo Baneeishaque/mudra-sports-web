@@ -31,9 +31,9 @@
                     <div class="media fot-contact">
                         <div class="left"><i class="fa fa-whatsapp"></i></div>
                         <div class="body">
-                            <p> Tel: +968 24 707009<br>
-                                fax: +968 24 707003<br>
-                                fax: +968 24 707003
+                            <p> Mr.Hamzath    : +968 92922180<br>
+                                Mr.Ajoy George: +968 96285251<br>
+                                Ms.Laila      : +971 556262500
                             </p>
                         </div>
                     </div>
